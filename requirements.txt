@@ -1,0 +1,32 @@
+# ML Dependencies
+transformers
+tensorflow
+spacy
+numpy
+pandas
+torch
+
+# FastAPI Dependencies
+fastapi
+uvicorn
+gunicorn  # Production WSGI server
+pydantic>=2.0.0
+pydantic-settings>=2.0.0  # For BaseSettings
+apscheduler
+
+# Google API Dependencies
+google-api-python-client
+google-auth
+google-auth-oauthlib
+google-auth-httplib2
+
+# Database Dependencies
+pymongo>=4.0.0  # Includes bson module with all required classes
+motor>=3.0.0  # Async MongoDB driver
+# Note: 'bson' standalone package is not compatible; use bson from pymongo
+
+# Other Dependencies
+pytz
+requests
+python-jose[cryptography]  # For JWT
+python-multipart  # For form data parsing
