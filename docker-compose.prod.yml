@@ -7,19 +7,17 @@ services:
       target: production
     ports:
       - "8000:8000"
+    env_file:
+      - .env.prod
     environment:
-      - ENVIRONMENT=development
-      - DEBUG=true
-      - HOST=0.0.0.0
-      - PORT=8000
-      - MONGODB_HOST=host.docker.internal
-      - MONGODB_PORT=27017
-      - MONGODB_USER=${MONGODB_USER:-admin}
-      - MONGODB_PASSWORD=${MONGODB_PASSWORD}
-      - MONGODB_AUTH_SOURCE=admin
-      - DATABASE_NAME=${DATABASE_NAME:-personal_manager}
+      - ENVIRONMENT=${ENVIRONMENT:-production}
+      - DEBUG=${DEBUG:-false}
+      - HOST=${HOST:-0.0.0.0}
+      - PORT=${PORT:-8000}
+      - MONGODB_URL=${MONGODB_URL}
+      - DATABASE_NAME=${DATABASE_NAME:-pmbackend}
       - SECRET_KEY=${SECRET_KEY}
-      - ALLOWED_ORIGINS_STR=${ALLOWED_ORIGINS:-http://localhost:3000,http://localhost:8080}
+      - ALLOWED_ORIGINS_STR=${ALLOWED_ORIGINS_STR}
       - GOOGLE_CLIENT_ID=${GOOGLE_CLIENT_ID}
       - GOOGLE_CLIENT_SECRET=${GOOGLE_CLIENT_SECRET}
       - SCHEDULER_TIMEZONE=${SCHEDULER_TIMEZONE:-America/Los_Angeles}

@@ -33,10 +33,16 @@ async def get_mongo_client() -> AsyncIOMotorClient:
 
     if _mongo_client is None:
         try:
-            logger.info(f"Connecting to MongoDB at {settings.get_mongodb_url()}")
+            mongodb_url = settings.get_mongodb_url()
+            # Mask password in logs for security
+            safe_url = mongodb_url.split('@')[0].split(':')[0] + ':***@' + mongodb_url.split('@')[1] if '@' in mongodb_url else mongodb_url
+            logger.info(f"Connecting to MongoDB at {safe_url}")
+            
             _mongo_client = AsyncIOMotorClient(
-                settings.get_mongodb_url(),
-                serverSelectionTimeoutMS=5000,  # 5 seconds timeout
+                mongodb_url,
+                serverSelectionTimeoutMS=10000,  # 10 seconds timeout for cloud connections
+                connectTimeoutMS=10000,
+                socketTimeoutMS=10000,
             )
 
             # Test the connection

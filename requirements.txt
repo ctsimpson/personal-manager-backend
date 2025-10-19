@@ -23,6 +23,7 @@ google-auth-httplib2
 # Database Dependencies
 pymongo>=4.0.0  # Includes bson module with all required classes
 motor>=3.0.0  # Async MongoDB driver
+dnspython>=2.0.0  # Required for mongodb+srv:// connection strings (MongoDB Atlas)
 # Note: 'bson' standalone package is not compatible; use bson from pymongo
 
 # Other Dependencies

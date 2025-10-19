@@ -30,6 +30,7 @@ ENV/
 .ENV/
 .env
 .ENV
+.env.prod
 
 # Jupyter Notebook
 .ipynb_checkpoints
